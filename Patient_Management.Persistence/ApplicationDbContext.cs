@@ -32,27 +32,10 @@ namespace Patient_Management.Persistence
         public DbSet<Patient> Patients { get; set; }
         public DbSet<PatientRecord> PatientRecords { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
-            var configRoot = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
-
-            options.UseSqlServer(
-                configRoot["ConnectionStrings:DBConnectionString"],
-                x => x.MigrationsHistoryTable("MIGRATION_HISTORY", "Patient_Management"));
-        }
-
-
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            //modelBuilder.HasDefaultSchema("WEBSERVE");
-
            
             base.OnModelCreating(modelBuilder);
 

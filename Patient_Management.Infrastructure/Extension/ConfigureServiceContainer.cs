@@ -42,7 +42,7 @@ namespace Patient_Management.Infrastructure.Extension
         {
             serviceCollection.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseSqlServer(configuration
+                options.UseSqlite(configuration
                     .GetConnectionString("DBConnectionString") ?? configRoot["ConnectionStrings:DBConnectionString"]
                 , b =>
                 {
@@ -50,6 +50,21 @@ namespace Patient_Management.Infrastructure.Extension
                 });
             });
         }
+
+        //public static void AddDatabaseContext(this IServiceCollection serviceCollection, IConfiguration configuration)
+        //{
+        //    var databaseOptions = new DatabaseOptions();
+        //    var databaseSection = configuration.GetSection("DatabaseOptions");
+        //    databaseSection.Bind(databaseOptions);
+
+        //    serviceCollection.AddDbContext<ApplicationDbContext>(options =>
+        //    {
+        //        options.UseSqlite(databaseOptions.ConnectionString, b =>
+        //        {
+        //            b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName);
+        //        });
+        //    });
+        //}
 
 
 
