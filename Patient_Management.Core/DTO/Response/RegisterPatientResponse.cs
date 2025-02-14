@@ -21,5 +21,6 @@ namespace Patient_Management.Core.DTO.Response
         public string Nationality { get; set; }
         public string NextOfKinPhone { get; set; }
         public string HomeAddress { get; set; }
+        public string Id { get; set; }
     }
 }
